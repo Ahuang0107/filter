@@ -29,7 +29,7 @@ export function FilterDisplayComponent(props: PropsType) {
             setDown(false)
         }} onMouseLeave={() => {
             setDown(false)
-        }}>
+        }} style={{position: "relative", width: width, height: height}}>
             <Image src={props.src1} width={width} left={0} right={middle} height={height} draggable={false}/>
             <Image src={props.src2} width={width} left={middle} right={width} height={height} draggable={false}/>
         </div>
