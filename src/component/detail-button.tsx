@@ -1,9 +1,14 @@
 import * as React from "react";
 import styled from "styled-components";
 
-export function DetailButton() {
+interface PropsType {
+    style?: React.CSSProperties
+}
+
+export function DetailButton(props: PropsType) {
+    const {style} = props
     return (
-        <Warp>
+        <Warp style={style}>
             <Text>详情</Text>
             <svg style={{marginLeft: 25}} width="19" height="19" viewBox="0 0 19 19" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
@@ -17,9 +22,11 @@ export function DetailButton() {
 }
 
 const Warp = styled.div`
+  box-sizing: border-box;
+  user-select: none;
   width: 153px;
   height: 44px;
-  border: #eeeeee 3px solid;
+  border: #eeeeee 2px solid;
   border-radius: 10px;
 
   display: flex;
