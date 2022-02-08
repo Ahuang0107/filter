@@ -1,56 +1,46 @@
 import * as React from "react";
-import {DetailButton} from "../component/detail-button";
-import example1Src from "../asset/image/example-01/original.png";
-import example2Src from "../asset/image/example-02/original.png";
-import example3Src from "../asset/image/example-03/original.png";
 import styled from "styled-components";
-import {Thumbnail} from "../component/thumbnail";
+import {VerticalBooth} from "../component/vertical-booth";
+import thumbnail01Src from "../../public/image/thumbnail/thumbnail-01.jpg";
+import thumbnail02Src from "../../public/image/thumbnail/thumbnail-02.jpg";
+import thumbnail03Src from "../../public/image/thumbnail/thumbnail-03.jpg";
+import thumbnail04Src from "../../public/image/thumbnail/thumbnail-04.jpg";
 
 export function Home() {
     return (
         <Wrap>
-            <p style={{
-                fontFamily: "方正清刻本悦宋",
-                color: "#eeeeee",
-                fontSize: 96,
-                position: "absolute",
-                top: 340,
-                left: 120,
-                margin: 0
-            }}>电影质感</p>
-            <p style={{
-                fontFamily: "方正清刻本悦宋",
-                color: "#eeeeee",
-                fontSize: 18,
-                position: "absolute",
-                top: 500,
-                left: 120,
-                width: 550,
-                margin: 0
-            }}>表现电影质感的滤镜，适合原本高调甚至过曝的照片，还可以充分表现出巴拉巴拉的效果</p>
-            <DetailButton style={{
-                position: "absolute",
-                top: 600,
-                left: 120,
-            }}/>
-            <Thumbnail backgroundImageSrc={example1Src}
-                       style={{
-                           position: "absolute",
-                           bottom: 80,
-                           right: 500,
-                       }}/>
-            <Thumbnail backgroundImageSrc={example2Src}
-                       style={{
-                           position: "absolute",
-                           bottom: 80,
-                           right: 280,
-                       }}/>
-            <Thumbnail backgroundImageSrc={example3Src}
-                       style={{
-                           position: "absolute",
-                           bottom: 80,
-                           right: 60,
-                       }}/>
+            <Header>
+                <p style={{
+                    fontFamily: "方正清刻本悦宋",
+                    color: "#EA713B",
+                    fontSize: 18,
+                }}>極細濾鏡</p>
+            </Header>
+            <Banner>
+                <p style={{
+                    fontFamily: "方正清刻本悦宋",
+                    color: "#000000",
+                    fontSize: 56,
+                    textAlign: "left"
+                }}>为你的作品增添<br/>细腻的感情</p>
+            </Banner>
+            <Gallery>
+                <p style={{
+                    fontFamily: "方正清刻本悦宋",
+                    color: "#000000",
+                    fontSize: 18,
+                    textAlign: "left",
+                    margin: 56
+                }}>电<br/>影<br/>风<br/>格<br/></p>
+                <VerticalBooth index={1} width={300} height={400} src={thumbnail01Src} name={"电影风格"}
+                               describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
+                <VerticalBooth index={2} width={400} height={300} src={thumbnail02Src} name={"欧美青橙色调"}
+                               describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
+                <VerticalBooth index={3} width={300} height={400} src={thumbnail03Src} name={"电影风格"}
+                               describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
+                <VerticalBooth index={4} width={400} height={300} src={thumbnail04Src} name={"欧美青橙色调"}
+                               describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
+            </Gallery>
         </Wrap>
     )
 }
@@ -58,8 +48,34 @@ export function Home() {
 const Wrap = styled.div`
   width: 100%;
   height: 100%;
-  background-image: url("${example1Src}");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-color: #F6F3EE;
+
+  display: flex;
+  flex-direction: column;
+`
+
+const Header = styled.div`
+  width: 100%;
+  height: 86px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const Banner = styled.div`
+  width: 100%;
+  height: 344px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const Gallery = styled.div`
+  width: 100%;
+  height: 529px;
+
+  display: flex;
+  flex-direction: row;
 `
