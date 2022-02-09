@@ -50,6 +50,4 @@ const Wrap = styled.div<{
 
   display: flex;
   flex-direction: column;
-
-  overflow: hidden;
 `
