@@ -5,6 +5,8 @@ import "./font.css";
 import {Home} from "./page/home";
 
 render(
-    <Home/>,
+    <React.StrictMode>
+        <Home/>
+    </React.StrictMode>,
     document.getElementById("react-page")
 );

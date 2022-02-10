@@ -101,6 +101,7 @@ const Header = styled.div`
 const Content = styled.div`
   width: 100%;
   flex: auto;
+  background-color: #F6F3EE;
 
   overflow-y: auto;
 
@@ -120,6 +121,7 @@ const Content = styled.div`
 const Banner = styled.div`
   width: 100%;
   height: 344px;
+  background-color: #F6F3EE;
 
   display: flex;
   align-items: center;
@@ -130,6 +132,7 @@ const Gallery = styled.div`
   width: 100%;
   margin-bottom: 32px;
   padding-bottom: 25px;
+  background-color: #F6F3EE;
 
   display: flex;
   flex-direction: row;
