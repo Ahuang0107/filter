@@ -1,20 +1,26 @@
 import * as React from "react";
 import styled from "styled-components";
-import {VerticalBooth} from "../component/vertical-booth";
 import thumbnail01Src from "../../public/image/thumbnail/thumbnail-01.jpg";
 import thumbnail02Src from "../../public/image/thumbnail/thumbnail-02.jpg";
 import thumbnail03Src from "../../public/image/thumbnail/thumbnail-03.jpg";
 import thumbnail04Src from "../../public/image/thumbnail/thumbnail-04.jpg";
+import thumbnail05Src from "../../public/image/thumbnail/thumbnail-05.jpg";
+import thumbnail06Src from "../../public/image/thumbnail/thumbnail-06.jpg";
+import thumbnail07Src from "../../public/image/thumbnail/thumbnail-07.jpg";
+import thumbnail08Src from "../../public/image/thumbnail/thumbnail-08.jpg";
+import thumbnail09Src from "../../public/image/thumbnail/thumbnail-09.jpg";
+import thumbnail10Src from "../../public/image/thumbnail/thumbnail-10.jpg";
+import thumbnail11Src from "../../public/image/thumbnail/thumbnail-11.jpg";
+import thumbnail12Src from "../../public/image/thumbnail/thumbnail-12.jpg";
+import thumbnail13Src from "../../public/image/thumbnail/thumbnail-13.jpg";
+import thumbnail14Src from "../../public/image/thumbnail/thumbnail-14.jpg";
+import thumbnail15Src from "../../public/image/thumbnail/thumbnail-15.jpg";
+import {PhotoBooth} from "../component/photo-booth";
 
 export function Home() {
     return (
         <Wrap>
             <Header>
-                <p style={{
-                    fontFamily: "方正清刻本悦宋",
-                    color: "#EA713B",
-                    fontSize: 18,
-                }}>極細濾鏡</p>
             </Header>
             <Content>
                 <Banner>
@@ -22,58 +28,61 @@ export function Home() {
                         fontFamily: "方正清刻本悦宋",
                         color: "#000000",
                         fontSize: 56,
-                        textAlign: "left"
-                    }}>为你的作品增添<br/>细腻的感情</p>
+                        margin: 0
+                    }}>极细滤镜</p>
+                    <p style={{
+                        fontFamily: "方正清刻本悦宋",
+                        color: "#000000",
+                        fontSize: 18,
+                        margin: 0
+                    }}>提供丰富的滤镜效果展示与资源下载，成为你的后期想法库，为你提供便利的滤镜浏览与收藏</p>
                 </Banner>
                 <Gallery>
-                    <p style={{
-                        fontFamily: "方正清刻本悦宋",
-                        color: "#000000",
-                        fontSize: 18,
-                        textAlign: "left",
-                        margin: 56
-                    }}>电<br/>影<br/>风<br/>格<br/></p>
-                    <VerticalBooth index={1} width={300} height={400} src={thumbnail01Src} name={"电影风格"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={2} width={400} height={300} src={thumbnail02Src} name={"欧美青橙色调"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={3} width={300} height={400} src={thumbnail03Src} name={"电影风格"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={4} width={400} height={300} src={thumbnail04Src} name={"欧美青橙色调"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={5} width={300} height={400} src={thumbnail01Src} name={"电影风格"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={6} width={400} height={300} src={thumbnail02Src} name={"欧美青橙色调"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={7} width={300} height={400} src={thumbnail03Src} name={"电影风格"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={8} width={400} height={300} src={thumbnail04Src} name={"欧美青橙色调"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                </Gallery>
-                <Gallery>
-                    <p style={{
-                        fontFamily: "方正清刻本悦宋",
-                        color: "#000000",
-                        fontSize: 18,
-                        textAlign: "left",
-                        margin: 56
-                    }}>电<br/>影<br/>风<br/>格<br/></p>
-                    <VerticalBooth index={1} width={300} height={400} src={thumbnail01Src} name={"电影风格"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={2} width={400} height={300} src={thumbnail02Src} name={"欧美青橙色调"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={3} width={300} height={400} src={thumbnail03Src} name={"电影风格"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={4} width={400} height={300} src={thumbnail04Src} name={"欧美青橙色调"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={5} width={300} height={400} src={thumbnail01Src} name={"电影风格"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={6} width={400} height={300} src={thumbnail02Src} name={"欧美青橙色调"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={7} width={300} height={400} src={thumbnail03Src} name={"电影风格"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
-                    <VerticalBooth index={8} width={400} height={300} src={thumbnail04Src} name={"欧美青橙色调"}
-                                   describe={"丰富色彩与细节的滤镜，适合一些阴雨天的街拍，低短调或者低中调的作品"}/>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail01Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail02Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail03Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail04Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail05Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail06Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail07Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail08Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail09Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail10Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail11Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail12Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail13Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail14Src}/>
+                    </GalleryBooth>
+                    <GalleryBooth>
+                        <PhotoBooth src={thumbnail15Src}/>
+                    </GalleryBooth>
                 </Gallery>
             </Content>
         </Wrap>
@@ -91,7 +100,9 @@ const Wrap = styled.div`
 
 const Header = styled.div`
   width: 100%;
-  flex: 0 0 86px;
+  flex: 0 0 54px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #ECECEC;
 
   display: flex;
   align-items: center;
@@ -101,7 +112,7 @@ const Header = styled.div`
 const Content = styled.div`
   width: 100%;
   flex: auto;
-  background-color: #F6F3EE;
+  background-color: #FFFFFF;
 
   overflow-y: auto;
 
@@ -120,34 +131,22 @@ const Content = styled.div`
 
 const Banner = styled.div`
   width: 100%;
-  height: 344px;
-  background-color: #F6F3EE;
+  height: 260px;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 `
 
-const Gallery = styled.div`
-  width: 100%;
-  margin-bottom: 32px;
-  padding-bottom: 25px;
-  background-color: #F6F3EE;
-
+const Gallery = styled.ul`
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+`
 
-  overflow-x: auto;
-
-  ::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: #C4C4C4;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: #5F5F5F;
-  }
+const GalleryBooth = styled.li`
+  list-style-type: none;
+  padding: 10px;
 `
