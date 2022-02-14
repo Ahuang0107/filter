@@ -21,6 +21,41 @@ export function Home() {
     return (
         <Wrap>
             <Header>
+                <ul style={{height: "100%", display: "flex", margin: 0, listStyle: "none"}}>
+                    <li style={{marginRight: 24}}>
+                        <a href=""
+                           style={{display: "flex", alignItems: "center", height: "100%", textDecoration: "none"}}>
+                            <p style={{
+                                fontFamily: "Montserrat",
+                                fontWeight: "bold",
+                                color: "#000000",
+                                fontSize: 18,
+                                margin: 0
+                            }}>極細濾鏡</p>
+                        </a>
+                    </li>
+                    <li style={{marginRight: 24}}>
+                        <a href=""
+                           style={{display: "flex", alignItems: "center", height: "100%", textDecoration: "none"}}>
+                            <p style={{
+                                fontFamily: "Montserrat",
+                                fontWeight: "bolder",
+                                color: "#000000",
+                                fontSize: 18,
+                                margin: 0
+                            }}>商品</p>
+                        </a>
+                    </li>
+                </ul>
+                <div style={{
+                    maxWidth: 488,
+                    flex: 1,
+                    paddingLeft: 40,
+                    paddingRight: 40,
+                    width: "100%",
+                    margin: "auto"
+                }}></div>
+                <ul style={{marginLeft: 16, marginRight: 16, margin: 0}}></ul>
             </Header>
             <Content>
                 <Banner>
@@ -103,10 +138,11 @@ const Header = styled.div`
   flex: 0 0 54px;
   background-color: #FFFFFF;
   border-bottom: 1px solid #ECECEC;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
 `
 
 const Content = styled.div`
