@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useState} from "react";
 import styled from "styled-components";
 import thumbnail01Src from "../../public/image/thumbnail/thumbnail-01.jpg";
 import thumbnail02Src from "../../public/image/thumbnail/thumbnail-02.jpg";
@@ -18,33 +19,25 @@ import thumbnail15Src from "../../public/image/thumbnail/thumbnail-15.jpg";
 import {PhotoBooth} from "../component/photo-booth";
 
 export function Home() {
+    const [tabIndex, setTabIndex] = useState(1)
     return (
         <Wrap>
             <Header>
                 <ul style={{height: "100%", display: "flex", margin: 0, listStyle: "none"}}>
-                    <li style={{marginRight: 24}}>
-                        <a href=""
-                           style={{display: "flex", alignItems: "center", height: "100%", textDecoration: "none"}}>
-                            <p style={{
-                                fontFamily: "Montserrat",
-                                fontWeight: "bold",
-                                color: "#000000",
-                                fontSize: 18,
-                                margin: 0
-                            }}>極細濾鏡</p>
-                        </a>
+                    <li style={{marginRight: 24, position: "relative"}}>
+                        <LogoCover>
+                            <TabContent>極細濾鏡</TabContent>
+                        </LogoCover>
                     </li>
-                    <li style={{marginRight: 24}}>
-                        <a href=""
-                           style={{display: "flex", alignItems: "center", height: "100%", textDecoration: "none"}}>
-                            <p style={{
-                                fontFamily: "Montserrat",
-                                fontWeight: "bolder",
-                                color: "#000000",
-                                fontSize: 18,
-                                margin: 0
-                            }}>商品</p>
-                        </a>
+                    <li style={{marginRight: 24, position: "relative"}}>
+                        <TabCover tabIndex={1} selected={tabIndex == 1} onClick={() => setTabIndex(1)}>
+                            <TabContent>滤镜展厅</TabContent>
+                        </TabCover>
+                    </li>
+                    <li style={{marginRight: 24, position: "relative"}}>
+                        <TabCover tabIndex={2} selected={tabIndex == 2} onClick={() => setTabIndex(2)}>
+                            <TabContent>我的收藏</TabContent>
+                        </TabCover>
                     </li>
                 </ul>
                 <div style={{
@@ -143,6 +136,49 @@ const Header = styled.div`
   box-sizing: border-box;
 
   display: flex;
+`
+
+const LogoCover = styled.a`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: hand;
+`
+
+const TabCover = styled(LogoCover)<{
+    selected: boolean
+}>`
+
+  :hover {
+    :after {
+      opacity: 1;
+    }
+  }
+
+  ::after {
+    opacity: ${props => props.selected ? 1 : 0};
+    background-color: #191919;
+    content: "";
+    height: 2px;
+    left: 0;
+    right: 0;
+    top: 100%;
+    position: absolute;
+
+    transform: translateY(-100%);
+    transition: transform .15s, opacity .15s, -webkit-transform .15s;
+  }
+`
+
+const TabContent = styled.p`
+  font-family: "Montserrat";
+  font-weight: bold;
+  color: #000000;
+  font-size: 18px;
+  margin: 0;
 `
 
 const Content = styled.div`
