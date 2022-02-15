@@ -16,39 +16,60 @@ import thumbnail12Src from "../../public/image/thumbnail/thumbnail-12.jpg";
 import thumbnail13Src from "../../public/image/thumbnail/thumbnail-13.jpg";
 import thumbnail14Src from "../../public/image/thumbnail/thumbnail-14.jpg";
 import thumbnail15Src from "../../public/image/thumbnail/thumbnail-15.jpg";
+import avatar from "../../public/image/avatar/avatar-25px.jpg";
 import {PhotoBooth} from "../component/photo-booth";
+import {
+    CoreLogoLink,
+    CoreNavigation,
+    CoreNavigationItem,
+    CoreNavigationLink,
+    CoreNavLabel,
+    LogoWrap,
+    SearchContainer,
+    SearchInput,
+    SiteSearchPanel,
+    UserControls,
+    UserControlsAvatar,
+    UserControlsItem
+} from "../component/header";
+import {SearchIcon} from "../component/icon/search";
 
 export function Home() {
+    // todo 这里可以写一个自定义的hook，来管理整个tNavigation
     const [tabIndex, setTabIndex] = useState(1)
     return (
         <Wrap>
             <Header>
-                <ul style={{height: "100%", display: "flex", margin: 0, listStyle: "none"}}>
-                    <li style={{marginRight: 24, position: "relative"}}>
-                        <LogoCover>
-                            <TabContent>極細濾鏡</TabContent>
-                        </LogoCover>
-                    </li>
-                    <li style={{marginRight: 24, position: "relative"}}>
-                        <TabCover tabIndex={1} selected={tabIndex == 1} onClick={() => setTabIndex(1)}>
-                            <TabContent>滤镜展厅</TabContent>
-                        </TabCover>
-                    </li>
-                    <li style={{marginRight: 24, position: "relative"}}>
-                        <TabCover tabIndex={2} selected={tabIndex == 2} onClick={() => setTabIndex(2)}>
-                            <TabContent>我的收藏</TabContent>
-                        </TabCover>
-                    </li>
-                </ul>
-                <div style={{
-                    maxWidth: 488,
-                    flex: 1,
-                    paddingLeft: 40,
-                    paddingRight: 40,
-                    width: "100%",
-                    margin: "auto"
-                }}></div>
-                <ul style={{marginLeft: 16, marginRight: 16, margin: 0}}></ul>
+                <CoreNavigation>
+                    <CoreNavigationItem>
+                        <CoreLogoLink>
+                            <LogoWrap>極細濾鏡</LogoWrap>
+                        </CoreLogoLink>
+                    </CoreNavigationItem>
+                    <CoreNavigationItem>
+                        <CoreNavigationLink tabIndex={1} selected={tabIndex == 1} onClick={() => setTabIndex(1)}>
+                            <CoreNavLabel>滤镜展厅</CoreNavLabel>
+                        </CoreNavigationLink>
+                    </CoreNavigationItem>
+                    <CoreNavigationItem>
+                        <CoreNavigationLink tabIndex={2} selected={tabIndex == 2} onClick={() => setTabIndex(2)}>
+                            <CoreNavLabel>我的收藏</CoreNavLabel>
+                        </CoreNavigationLink>
+                    </CoreNavigationItem>
+                </CoreNavigation>
+                <SiteSearchPanel>
+                    <SearchContainer>
+                        <SearchIcon/>
+                        <SearchInput placeholder={"搜索..."}/>
+                    </SearchContainer>
+                </SiteSearchPanel>
+                <UserControls>
+                    <UserControlsItem>
+                        <UserControlsItem>
+                            <UserControlsAvatar src={avatar}/>
+                        </UserControlsItem>
+                    </UserControlsItem>
+                </UserControls>
             </Header>
             <Content>
                 <Banner>
@@ -136,49 +157,6 @@ const Header = styled.div`
   box-sizing: border-box;
 
   display: flex;
-`
-
-const LogoCover = styled.a`
-  display: flex;
-  align-items: center;
-  height: 100%;
-  text-decoration: none;
-  box-sizing: border-box;
-  user-select: none;
-  cursor: hand;
-`
-
-const TabCover = styled(LogoCover)<{
-    selected: boolean
-}>`
-
-  :hover {
-    :after {
-      opacity: 1;
-    }
-  }
-
-  ::after {
-    opacity: ${props => props.selected ? 1 : 0};
-    background-color: #191919;
-    content: "";
-    height: 2px;
-    left: 0;
-    right: 0;
-    top: 100%;
-    position: absolute;
-
-    transform: translateY(-100%);
-    transition: transform .15s, opacity .15s, -webkit-transform .15s;
-  }
-`
-
-const TabContent = styled.p`
-  font-family: "Montserrat";
-  font-weight: bold;
-  color: #000000;
-  font-size: 18px;
-  margin: 0;
 `
 
 const Content = styled.div`
