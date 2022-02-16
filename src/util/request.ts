@@ -1,1 +1,1 @@
-export const RESOURCE_URL = "http://localhost:10110/resource/images/thumbnail/"
+export const RESOURCE_URL = "http://localhost:10110/resource/images/"

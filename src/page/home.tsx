@@ -1,7 +1,6 @@
 import * as React from "react";
 import {useState} from "react";
 import styled from "styled-components";
-import avatar from "../../public/image/avatar/avatar-25px.jpg";
 import {PhotoBooth} from "../component/photo-booth";
 import {
     CoreLogoLink,
@@ -24,8 +23,11 @@ export function Home() {
     // todo 这里可以写一个自定义的hook，来管理整个tNavigation
     const [tabIndex, setTabIndex] = useState(1)
 
+    const getAvatar = (num: string) => {
+        return RESOURCE_URL + `avatar/${num}.jpg`
+    }
     const getThumbnail = (num: string) => {
-        return RESOURCE_URL + `thumbnail-${num}.jpg`
+        return RESOURCE_URL + `thumbnail/thumbnail-${num}.jpg`
     }
     return (
         <Wrap>
@@ -56,7 +58,7 @@ export function Home() {
                 <UserControls>
                     <UserControlsItem>
                         <UserControlsItem>
-                            <UserControlsAvatar src={avatar}/>
+                            <UserControlsAvatar src={getAvatar("01")}/>
                         </UserControlsItem>
                     </UserControlsItem>
                 </UserControls>
