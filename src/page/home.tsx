@@ -16,81 +16,83 @@ import {
     UserControlsAvatar,
     UserControlsItem
 } from "../component/header";
-import {SearchIcon} from "../component/icon/search";
+import {SearchIcon} from "../component/icon";
 import {RESOURCE_URL} from "../util";
+import {PopupLayout} from "./popup-layout";
 
 export function Home() {
     // todo 这里可以写一个自定义的hook，来管理整个tNavigation
     const [tabIndex, setTabIndex] = useState(1)
+    const [originId, setOriginId] = useState<string | null>(null)
 
     const getAvatar = (num: string) => {
         return RESOURCE_URL + `avatar/${num}.jpg`
     }
-    const getThumbnail = (num: string) => {
-        return RESOURCE_URL + `thumbnail/thumbnail-${num}.jpg`
-    }
     return (
-        <Wrap>
-            <Header>
-                <CoreNavigation>
-                    <CoreNavigationItem>
-                        <CoreLogoLink>
-                            <LogoWrap>極細濾鏡</LogoWrap>
-                        </CoreLogoLink>
-                    </CoreNavigationItem>
-                    <CoreNavigationItem>
-                        <CoreNavigationLink tabIndex={1} selected={tabIndex == 1} onClick={() => setTabIndex(1)}>
-                            <CoreNavLabel>滤镜展厅</CoreNavLabel>
-                        </CoreNavigationLink>
-                    </CoreNavigationItem>
-                    <CoreNavigationItem>
-                        <CoreNavigationLink tabIndex={2} selected={tabIndex == 2} onClick={() => setTabIndex(2)}>
-                            <CoreNavLabel>我的收藏</CoreNavLabel>
-                        </CoreNavigationLink>
-                    </CoreNavigationItem>
-                </CoreNavigation>
-                <SiteSearchPanel>
-                    <SearchContainer>
-                        <SearchIcon/>
-                        <SearchInput placeholder={"搜索..."}/>
-                    </SearchContainer>
-                </SiteSearchPanel>
-                <UserControls>
-                    <UserControlsItem>
+        <>
+            <Wrap>
+                <Header>
+                    <CoreNavigation>
+                        <CoreNavigationItem>
+                            <CoreLogoLink>
+                                <LogoWrap>極細濾鏡</LogoWrap>
+                            </CoreLogoLink>
+                        </CoreNavigationItem>
+                        <CoreNavigationItem>
+                            <CoreNavigationLink tabIndex={1} selected={tabIndex == 1} onClick={() => setTabIndex(1)}>
+                                <CoreNavLabel>滤镜展厅</CoreNavLabel>
+                            </CoreNavigationLink>
+                        </CoreNavigationItem>
+                        <CoreNavigationItem>
+                            <CoreNavigationLink tabIndex={2} selected={tabIndex == 2} onClick={() => setTabIndex(2)}>
+                                <CoreNavLabel>我的收藏</CoreNavLabel>
+                            </CoreNavigationLink>
+                        </CoreNavigationItem>
+                    </CoreNavigation>
+                    <SiteSearchPanel>
+                        <SearchContainer>
+                            <SearchIcon/>
+                            <SearchInput placeholder={"搜索..."}/>
+                        </SearchContainer>
+                    </SiteSearchPanel>
+                    <UserControls>
                         <UserControlsItem>
-                            <UserControlsAvatar src={getAvatar("01")}/>
+                            <UserControlsItem>
+                                <UserControlsAvatar src={getAvatar("01")}/>
+                            </UserControlsItem>
                         </UserControlsItem>
-                    </UserControlsItem>
-                </UserControls>
-            </Header>
-            <Content>
-                <Banner>
-                    <p style={{
-                        fontFamily: "方正清刻本悦宋",
-                        color: "#000000",
-                        fontSize: 56,
-                        margin: 0
-                    }}>极细滤镜</p>
-                    <p style={{
-                        fontFamily: "方正清刻本悦宋",
-                        color: "#000000",
-                        fontSize: 18,
-                        margin: 0
-                    }}>提供丰富的滤镜效果展示与资源下载，成为你的后期想法库，为你提供便利的滤镜浏览与收藏</p>
-                </Banner>
-                <Gallery>
-                    {
-                        ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15"].map((num) => {
-                            return (
-                                <GalleryBooth>
-                                    <PhotoBooth src={getThumbnail(num)}/>
-                                </GalleryBooth>
-                            )
-                        })
-                    }
-                </Gallery>
-            </Content>
-        </Wrap>
+                    </UserControls>
+                </Header>
+                <Content>
+                    <Banner>
+                        <p style={{
+                            fontFamily: "方正清刻本悦宋",
+                            color: "#000000",
+                            fontSize: 56,
+                            margin: 0
+                        }}>极细滤镜</p>
+                        <p style={{
+                            fontFamily: "方正清刻本悦宋",
+                            color: "#000000",
+                            fontSize: 18,
+                            margin: 0
+                        }}>提供丰富的滤镜效果展示与资源下载，成为你的后期想法库，为你提供便利的滤镜浏览与收藏</p>
+                    </Banner>
+                    <Gallery>
+                        {
+                            ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15"].map((num, index) => {
+                                return (
+                                    <GalleryBooth key={index}>
+                                        <PhotoBooth key={index} num={num} onClick={setOriginId}/>
+                                    </GalleryBooth>
+                                )
+                            })
+                        }
+                    </Gallery>
+                </Content>
+            </Wrap>
+            {originId && <PopupLayout num={originId} onClose={setOriginId}/>}
+        </>
     )
 }
 
@@ -98,6 +100,11 @@ const Wrap = styled.div`
   width: 100%;
   height: 100%;
   background-color: #F6F3EE;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 0;
 
   display: flex;
   flex-direction: column;

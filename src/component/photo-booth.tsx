@@ -2,22 +2,27 @@ import * as React from "react";
 import styled from "styled-components";
 import {BookmarkLr, BookmarkPs} from "./icon";
 import {AddButton} from "./button/add-button";
+import {RESOURCE_URL} from "../util";
 
 interface PropsType {
-    src: string
+    num: string
+    onClick?: React.Dispatch<React.SetStateAction<string>>
 }
 
 export function PhotoBooth(props: PropsType) {
-    const {src} = props
+    const {num, onClick} = props
+    const getThumbnail = (num: string) => {
+        return RESOURCE_URL + `thumbnail/thumbnail-${num}.jpg`
+    }
     return (
         <div>
             <CoverWrapper>
                 <CoverContent>
-                    <CoverContentImg src={src}/>
+                    <CoverContentImg src={getThumbnail(num)}/>
                 </CoverContent>
-                <CoverOverlay>
+                <CoverOverlay onClick={() => onClick(num)}>
                     <CoverOverlayHeaderPanel>
-                        <AddButton style={{marginTop: 8, marginLeft: 8}}/>
+                        <AddButton style={{marginTop: 8, marginLeft: 8}} onClick={() => console.log(num)}/>
                         <BookmarkPanel>
                             <BookmarkPs style={{marginRight: 8}}/>
                             <BookmarkLr style={{marginRight: 12}}/>

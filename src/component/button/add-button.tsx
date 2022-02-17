@@ -7,11 +7,18 @@ import styled from "styled-components";
 interface PropsType {
     style?: React.CSSProperties,
     text?: string,
+    onClick?: () => void
 }
 
 export function AddButton(props: PropsType) {
+
+    function onClick(e: React.MouseEvent<HTMLDivElement>) {
+        props.onClick()
+        e.stopPropagation()
+    }
+
     return (
-        <Wrap style={props.style} onClick={(e) => console.log(e)}>
+        <Wrap style={props.style} onClick={onClick}>
             <p style={{
                 fontFamily: "方正清刻本悦宋",
                 color: "#FFFFFF",
