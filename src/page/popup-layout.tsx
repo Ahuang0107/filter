@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import {CloseIcon} from "../component/icon";
 import {RESOURCE_URL} from "../util";
+import {FilterDisplayComponent} from "../component/filter-display-component";
 
 interface PropsType {
     num: string
@@ -19,9 +20,9 @@ export function PopupLayout(props: PropsType) {
                 <OverlayWallpaper/>
                 <OverLayContent>
                     <Photos>
-                        <Photo src={getOrigin("01")}/>
-                        <Photo src={getOrigin("02")}/>
-                        <Photo src={getOrigin("03")}/>
+                        <FilterDisplayComponent src1={getOrigin("01")} src2={getOrigin("02")} width={1400} height={875}/>
+                        <FilterDisplayComponent src1={getOrigin("02")} src2={getOrigin("03")} width={1400} height={875}/>
+                        <FilterDisplayComponent src1={getOrigin("03")} src2={getOrigin("01")} width={1400} height={875}/>
                     </Photos>
                 </OverLayContent>
             </Inner>
@@ -61,10 +62,6 @@ const OverLayContent = styled.div`
 
 const Photos = styled.div`
   width: 1400px;
-  position: relative;
-`
-
-const Photo = styled.img`
   position: relative;
 `
 

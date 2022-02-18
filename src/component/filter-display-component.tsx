@@ -16,25 +16,32 @@ export function FilterDisplayComponent(props: PropsType) {
     const [down, setDown] = useState(false)
     const [downX, setDownX] = useState(0)
     return (
-        <div onMouseDown={(e) => {
+        <Wrap onMouseDown={(e) => {
             setDown(true)
             setDownX(e.clientX)
         }} onMouseMove={(e) => {
             if (down) {
                 const moveX = e.clientX - downX
                 setDownX(e.clientX)
-                setMiddle(middle + moveX)
+                if ((middle + moveX) < 0) setMiddle(0)
+                else if ((middle + moveX) > width) setMiddle(width)
+                else setMiddle(middle + moveX)
             }
         }} onMouseUp={() => {
             setDown(false)
         }} onMouseLeave={() => {
             setDown(false)
-        }} style={{position: "relative", width: width, height: height}}>
+        }} style={{width: width, height: height}}>
             <Image src={props.src1} width={width} left={0} right={middle} height={height} draggable={false}/>
             <Image src={props.src2} width={width} left={middle} right={width} height={height} draggable={false}/>
-        </div>
+        </Wrap>
     )
 }
+
+const Wrap = styled.div`
+  position: relative;
+  cursor: hand;
+`
 
 const Image = styled.img<{
     left: number,
