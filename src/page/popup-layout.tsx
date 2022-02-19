@@ -1,18 +1,30 @@
 import * as React from "react";
+import {useEffect, useState} from "react";
 import styled from "styled-components";
 import {CloseIcon} from "../component/icon";
 import {RESOURCE_URL} from "../util";
 import {FilterDisplayComponent} from "../component/filter-display-component";
 
 interface PropsType {
-    num: string
-    onClose?: React.Dispatch<React.SetStateAction<string>>
+    id: bigint | null
+    onClose?: React.Dispatch<React.SetStateAction<bigint | null>>
 }
 
 export function PopupLayout(props: PropsType) {
-    const {onClose} = props
-    const getOrigin = (num: string) => {
-        return RESOURCE_URL + `origin/origin-${num}.jpg`
+    const {id, onClose} = props
+    const [originList, setOriginList] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            await fetch('http://localhost:10110/api/filter/origin/' + id)
+                .then(res => res.json())
+                .then(data => setOriginList(data.data))
+        }
+        fetchData()
+    }, [])
+
+    const getOrigin = (name: string) => {
+        return RESOURCE_URL + `origin/${name}.jpg`
     }
     return (
         <Wrapper>
@@ -20,9 +32,17 @@ export function PopupLayout(props: PropsType) {
                 <OverlayWallpaper/>
                 <OverLayContent>
                     <Photos>
-                        <FilterDisplayComponent src1={getOrigin("01")} src2={getOrigin("02")} width={1400} height={875}/>
-                        <FilterDisplayComponent src1={getOrigin("02")} src2={getOrigin("03")} width={1400} height={875}/>
-                        <FilterDisplayComponent src1={getOrigin("03")} src2={getOrigin("01")} width={1400} height={875}/>
+                        {
+                            originList.map((origin, index) => {
+                                return (
+                                    <FilterDisplayComponent key={index}
+                                                            src1={getOrigin(origin.beforeImage)}
+                                                            src2={getOrigin(origin.afterImage)}
+                                                            width={1400}
+                                                            height={1400 * origin.height / origin.width}/>
+                                )
+                            })
+                        }
                     </Photos>
                 </OverLayContent>
             </Inner>

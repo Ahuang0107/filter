@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import styled from "styled-components";
 import {PhotoBooth} from "../component/photo-booth";
 import {
@@ -23,7 +23,18 @@ import {PopupLayout} from "./popup-layout";
 export function Home() {
     // todo 这里可以写一个自定义的hook，来管理整个tNavigation
     const [tabIndex, setTabIndex] = useState(1)
-    const [originId, setOriginId] = useState<string | null>(null)
+    const [originId, setOriginId] = useState<bigint | null>(null)
+
+    const [filterList, setFilterList] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            await fetch('http://localhost:10110/api/filter/list')
+                .then(res => res.json())
+                .then(data => setFilterList(data.data))
+        }
+        fetchData()
+    }, [])
 
     const getAvatar = (num: string) => {
         return RESOURCE_URL + `avatar/${num}.jpg`
@@ -57,9 +68,7 @@ export function Home() {
                     </SiteSearchPanel>
                     <UserControls>
                         <UserControlsItem>
-                            <UserControlsItem>
-                                <UserControlsAvatar src={getAvatar("01")}/>
-                            </UserControlsItem>
+                            <UserControlsAvatar src={getAvatar("01")}/>
                         </UserControlsItem>
                     </UserControls>
                 </Header>
@@ -80,10 +89,10 @@ export function Home() {
                     </Banner>
                     <Gallery>
                         {
-                            ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15"].map((num, index) => {
+                            filterList.map(filter => {
                                 return (
-                                    <GalleryBooth key={index}>
-                                        <PhotoBooth key={index} num={num} onClick={setOriginId}/>
+                                    <GalleryBooth key={filter.id}>
+                                        <PhotoBooth key={filter.id} num={filter.id} onClick={setOriginId}/>
                                     </GalleryBooth>
                                 )
                             })
@@ -91,7 +100,7 @@ export function Home() {
                     </Gallery>
                 </Content>
             </Wrap>
-            {originId && <PopupLayout num={originId} onClose={setOriginId}/>}
+            {originId && <PopupLayout id={originId} onClose={setOriginId}/>}
         </>
     )
 }

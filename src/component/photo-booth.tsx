@@ -5,14 +5,14 @@ import {AddButton} from "./button/add-button";
 import {RESOURCE_URL} from "../util";
 
 interface PropsType {
-    num: string
-    onClick?: React.Dispatch<React.SetStateAction<string>>
+    num: bigint
+    onClick?: React.Dispatch<React.SetStateAction<bigint>>
 }
 
 export function PhotoBooth(props: PropsType) {
     const {num, onClick} = props
-    const getThumbnail = (num: string) => {
-        return RESOURCE_URL + `thumbnail/thumbnail-${num}.jpg`
+    const getThumbnail = (num: bigint) => {
+        return RESOURCE_URL + `thumbnail/${num}.jpg`
     }
     return (
         <div>
