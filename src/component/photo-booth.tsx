@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import {BookmarkLr, BookmarkPs} from "./icon";
+import {BookmarkCube, BookmarkLrtemplate, BookmarkXmp} from "./icon";
 import {AddButton} from "./button/add-button";
 import {RESOURCE_URL} from "../util";
 import {Filter} from "../dto";
@@ -25,8 +25,9 @@ export function PhotoBooth(props: PropsType) {
                     <CoverOverlayHeaderPanel>
                         <AddButton style={{marginTop: 8, marginLeft: 8}} onClick={() => console.log(filter.id)}/>
                         <BookmarkPanel>
-                            <BookmarkPs style={{marginRight: 8}}/>
-                            <BookmarkLr style={{marginRight: 12}}/>
+                            <BookmarkXmp style={{marginRight: 8}}/>
+                            <BookmarkCube style={{marginRight: 12}}/>
+                            <BookmarkLrtemplate style={{marginRight: 12}}/>
                         </BookmarkPanel>
                     </CoverOverlayHeaderPanel>
                     <CoverOverlayTitlePanel>
