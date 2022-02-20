@@ -17,7 +17,7 @@ import {
     UserControlsItem
 } from "../component/header";
 import {SearchIcon} from "../component/icon";
-import {RESOURCE_URL} from "../util";
+import {getAvatarImage} from "../util";
 import {PopupLayout} from "./popup-layout";
 import {Filter} from "../dto";
 
@@ -37,9 +37,6 @@ export function Home() {
         fetchData()
     }, [])
 
-    const getAvatar = (num: string) => {
-        return RESOURCE_URL + `avatar/${num}.jpg`
-    }
     return (
         <>
             <Wrap>
@@ -69,7 +66,7 @@ export function Home() {
                     </SiteSearchPanel>
                     <UserControls>
                         <UserControlsItem>
-                            <UserControlsAvatar src={getAvatar("01")}/>
+                            <UserControlsAvatar src={getAvatarImage(1)}/>
                         </UserControlsItem>
                     </UserControls>
                 </Header>
