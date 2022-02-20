@@ -4,6 +4,7 @@ import {AddButton} from "./button/add-button";
 import {RESOURCE_URL} from "../util";
 import {Filter} from "../dto";
 import {BookmarkCube, BookmarkLrtemplate, BookmarkXmp} from "./bookmark";
+import {DownloadIcon, PriceIcon} from "./icon";
 
 interface PropsType {
     filter: Filter
@@ -48,6 +49,9 @@ export function PhotoBooth(props: PropsType) {
                     margin: 0,
                 }}>{filter.name}</p>
                 <CountSlot>
+                    <span>
+                        <DownloadIcon/>
+                    </span>
                     <p style={{
                         fontFamily: "Montserrat",
                         color: "#5F5F5F",
@@ -55,6 +59,9 @@ export function PhotoBooth(props: PropsType) {
                         margin: 0,
                         marginLeft: 5,
                     }}>1.3K</p>
+                    <span style={{marginLeft: 8}}>
+                        <PriceIcon/>
+                    </span>
                     <p style={{
                         fontFamily: "Montserrat",
                         color: "#5F5F5F",
