@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import {AddButton} from "./button/add-button";
-import {RESOURCE_URL} from "../util";
+import {RESOURCE_URL, toKilo, toRMB} from "../util";
 import {Filter} from "../dto";
 import {BookmarkCube, BookmarkLrtemplate, BookmarkXmp} from "./bookmark";
 import {DownloadIcon, PriceIcon} from "./icon";
@@ -58,7 +58,7 @@ export function PhotoBooth(props: PropsType) {
                         fontSize: 10,
                         margin: 0,
                         marginLeft: 5,
-                    }}>1.3K</p>
+                    }}>{toKilo(filter.download)}</p>
                     <span style={{marginLeft: 8}}>
                         <PriceIcon/>
                     </span>
@@ -68,7 +68,7 @@ export function PhotoBooth(props: PropsType) {
                         fontSize: 10,
                         margin: 0,
                         marginLeft: 5,
-                    }}>¥5</p>
+                    }}>{toRMB(filter.price)}</p>
                 </CountSlot>
             </InfoSlot>
         </div>
