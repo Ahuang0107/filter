@@ -2,7 +2,7 @@ import * as React from "react";
 import {useEffect, useState} from "react";
 import styled from "styled-components";
 import {CloseIcon} from "../component/icon";
-import {RESOURCE_URL} from "../util";
+import {getOriginImage} from "../util";
 import {FilterDisplayComponent} from "../component/filter-display-component";
 
 interface PropsType {
@@ -23,9 +23,6 @@ export function PopupLayout(props: PropsType) {
         fetchData()
     }, [])
 
-    const getOrigin = (name: string) => {
-        return RESOURCE_URL + `origin/${name}.jpg`
-    }
     return (
         <Wrapper>
             <Inner>
@@ -36,8 +33,8 @@ export function PopupLayout(props: PropsType) {
                             originList.map((origin, index) => {
                                 return (
                                     <FilterDisplayComponent key={index}
-                                                            src1={getOrigin(origin.beforeImage)}
-                                                            src2={getOrigin(origin.afterImage)}
+                                                            src1={getOriginImage(origin.beforeImage)}
+                                                            src2={getOriginImage(origin.afterImage)}
                                                             width={1400}
                                                             height={1400 * origin.height / origin.width}/>
                                 )

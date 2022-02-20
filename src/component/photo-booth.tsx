@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import {AddButton} from "./button/add-button";
-import {RESOURCE_URL, toKilo, toRMB} from "../util";
+import {getThumbnailImage, toKilo, toRMB} from "../util";
 import {Filter} from "../dto";
 import {BookmarkCube, BookmarkLrtemplate, BookmarkXmp} from "./bookmark";
 import {DownloadIcon, PriceIcon} from "./icon";
@@ -13,14 +13,11 @@ interface PropsType {
 
 export function PhotoBooth(props: PropsType) {
     const {filter, onClick} = props
-    const getThumbnail = (id: bigint) => {
-        return RESOURCE_URL + `thumbnail/${id}.jpg`
-    }
     return (
         <div>
             <CoverWrapper>
                 <CoverContent>
-                    <CoverContentImg src={getThumbnail(filter.id)}/>
+                    <CoverContentImg src={getThumbnailImage(filter.id)}/>
                 </CoverContent>
                 <CoverOverlay onClick={() => onClick(filter.id)}>
                     <CoverOverlayHeaderPanel>
