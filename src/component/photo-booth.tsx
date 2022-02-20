@@ -3,26 +3,27 @@ import styled from "styled-components";
 import {BookmarkLr, BookmarkPs} from "./icon";
 import {AddButton} from "./button/add-button";
 import {RESOURCE_URL} from "../util";
+import {Filter} from "../dto";
 
 interface PropsType {
-    num: bigint
+    filter: Filter
     onClick?: React.Dispatch<React.SetStateAction<bigint>>
 }
 
 export function PhotoBooth(props: PropsType) {
-    const {num, onClick} = props
-    const getThumbnail = (num: bigint) => {
-        return RESOURCE_URL + `thumbnail/${num}.jpg`
+    const {filter, onClick} = props
+    const getThumbnail = (id: bigint) => {
+        return RESOURCE_URL + `thumbnail/${id}.jpg`
     }
     return (
         <div>
             <CoverWrapper>
                 <CoverContent>
-                    <CoverContentImg src={getThumbnail(num)}/>
+                    <CoverContentImg src={getThumbnail(filter.id)}/>
                 </CoverContent>
-                <CoverOverlay onClick={() => onClick(num)}>
+                <CoverOverlay onClick={() => onClick(filter.id)}>
                     <CoverOverlayHeaderPanel>
-                        <AddButton style={{marginTop: 8, marginLeft: 8}} onClick={() => console.log(num)}/>
+                        <AddButton style={{marginTop: 8, marginLeft: 8}} onClick={() => console.log(filter.id)}/>
                         <BookmarkPanel>
                             <BookmarkPs style={{marginRight: 8}}/>
                             <BookmarkLr style={{marginRight: 12}}/>
@@ -34,7 +35,7 @@ export function PhotoBooth(props: PropsType) {
                             color: "#FFFFFF",
                             fontSize: 12,
                             margin: 0,
-                        }}>渲染清爽舒适的情绪的滤镜，适合中长调的照片，通过添加青色和适当的暖色来增加画面</p>
+                        }}>{filter.description}</p>
                     </CoverOverlayTitlePanel>
                 </CoverOverlay>
             </CoverWrapper>
@@ -44,7 +45,7 @@ export function PhotoBooth(props: PropsType) {
                     color: "#000000",
                     fontSize: 12,
                     margin: 0,
-                }}>青空风格滤镜</p>
+                }}>{filter.name}</p>
                 <CountSlot>
                     <p style={{
                         fontFamily: "Montserrat",

@@ -19,13 +19,14 @@ import {
 import {SearchIcon} from "../component/icon";
 import {RESOURCE_URL} from "../util";
 import {PopupLayout} from "./popup-layout";
+import {Filter} from "../dto";
 
 export function Home() {
     // todo 这里可以写一个自定义的hook，来管理整个tNavigation
     const [tabIndex, setTabIndex] = useState(1)
     const [originId, setOriginId] = useState<bigint | null>(null)
 
-    const [filterList, setFilterList] = useState([])
+    const [filterList, setFilterList] = useState<Filter[]>([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -89,10 +90,10 @@ export function Home() {
                     </Banner>
                     <Gallery>
                         {
-                            filterList.map(filter => {
+                            filterList.map((filter, index) => {
                                 return (
-                                    <GalleryBooth key={filter.id}>
-                                        <PhotoBooth key={filter.id} num={filter.id} onClick={setOriginId}/>
+                                    <GalleryBooth key={index}>
+                                        <PhotoBooth key={index} filter={filter} onClick={setOriginId}/>
                                     </GalleryBooth>
                                 )
                             })
