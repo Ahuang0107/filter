@@ -1,9 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
-import {BookmarkCube, BookmarkLrtemplate, BookmarkXmp} from "./icon";
 import {AddButton} from "./button/add-button";
 import {RESOURCE_URL} from "../util";
 import {Filter} from "../dto";
+import {BookmarkCube, BookmarkLrtemplate, BookmarkXmp} from "./bookmark";
 
 interface PropsType {
     filter: Filter
